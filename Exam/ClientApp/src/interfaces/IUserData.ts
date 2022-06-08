@@ -9,6 +9,7 @@ interface IUserData{
     registration:string;
     age:number;
     credit_amount:number;
+    hasOtherCredits: boolean;
     purpose:number ;
     employment:number ;
     deposit: number ;

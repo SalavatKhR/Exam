@@ -1,7 +1,14 @@
+using Exam.Infrastructure;
+using Exam.Infrastructure.Services;
+using Exam.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.AddTransient<ICreditDataHandler, CreditDataHandler>();
+builder.Services.AddTransient<ICriminalCheker, CriminalCheker>();
+builder.Services.AddTransient<ICreditCalculator, CreditCalculator>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

@@ -1,0 +1,16 @@
+﻿export const PassportSeriesLength = 4;
+export const PassportNumberLength = 6;
+export const PassportIssuerMinLength = 1;
+export const PassportIssuerMaxLength = 100;
+export const PassportRegInformationMinLength = 1;
+export const PassportRegInformationMaxLength = 100;
+export const NameMinLength = 2;
+export const NameMaxLength = 20;
+export const SurnameMinLength = 2;
+export const SurnameMaxLength = 20;
+export const PatronymicMinLength = 0;
+export const PatronymicMaxLength = 20;
+export const AgeMin = 21;
+export const AgeMax = 72;
+export const AmountMin = 300000;
+export const AmountMax = 15000000;

@@ -7,8 +7,8 @@ public class UserData
     public string surname { get; set; }
     public string name { get; set; }
     public string patronymic { get; set; }
-    public string passport_series { get; set; }
-    public string passport_id { get; set; }
+    public int passport_series { get; set; }
+    public int passport_id { get; set; }
     public string issued_by { get; set; }
     public string registration { get; set; }
     public int age { get; set; }

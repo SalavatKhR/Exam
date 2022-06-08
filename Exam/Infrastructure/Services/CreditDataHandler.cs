@@ -1,33 +1,19 @@
-﻿using Exam.Models;
+﻿using Exam.Interfaces;
+using Exam.Models;
 using Exam.Models.Enums;
 
-namespace Exam.Infrastructure;
+namespace Exam.Infrastructure.Services;
 
-public class CreditCalculator
+public class CreditDataHandler: ICreditDataHandler
 {
-    public static double CalculateCredit(UserData userData)
+    private readonly ICriminalCheker _criminalChecker;
+
+    public CreditDataHandler(ICriminalCheker criminalChecker)
     {
-        var creditRes = 0;
-        creditRes += CalculateEmployment(userData);
-        creditRes += CalculateTarget(userData);
-        creditRes += CalculateGuarantee(userData);
-        creditRes += CalculateCreditHistory(userData);
-        creditRes += CheckCrimeRecords(userData);
-        creditRes += CalculateAmount(userData);
-        creditRes += CalculateAge(userData);
-        return creditRes switch
-        {
-            80 => 30,
-            84 => 26,
-            88 => 22,
-            92 => 19,
-            96 => 15,
-            100 => 12.5,
-            _ => 0
-        };
+        _criminalChecker = criminalChecker;
     }
 
-    private static int CalculateEmployment(UserData userData)
+    public int CalculateEmployment(UserData userData)
     {
         var employment = (int)userData.employment;
         return employment switch
@@ -41,7 +27,7 @@ public class CreditCalculator
         };
     }
     
-    private static int CalculateTarget(UserData userData)
+    public int CalculateTarget(UserData userData)
     {
         var purpose = (int)userData.purpose;
         return purpose switch
@@ -53,7 +39,7 @@ public class CreditCalculator
         };
     }
     
-    private static int CalculateGuarantee(UserData userData)
+    public int CalculateGuarantee(UserData userData)
     {
         var deposit = (int)userData.deposit;
         return deposit switch
@@ -64,17 +50,18 @@ public class CreditCalculator
         };
     }
     
-    private static int CalculateCreditHistory(UserData userData)
+    public int CalculateCreditHistory(UserData userData)
     {
         return 14;
     }
 
-    private static int CheckCrimeRecords(UserData userData)
+    public async Task<int> CheckCrimeRecords(Passport passport)
     {
-        return 14;
+        var checkCrime = await _criminalChecker.CheckAsync(passport);
+        return checkCrime ? 0 : 14;
     }
     
-    private static int CalculateAmount(UserData userData)
+    public int CalculateAmount(UserData userData)
     {
         var amount = userData.credit_amount;
         return amount switch
@@ -86,7 +73,7 @@ public class CreditCalculator
         };
     }
     
-    private static int CalculateAge(UserData userData)
+    public int CalculateAge(UserData userData)
     {
         var age = userData.age;
         var amount = userData.credit_amount;

@@ -20,20 +20,23 @@
     <ItemGroup>
         <!-- Don't publish the SPA source files, but do show them in the project files list -->
         <Content Remove="$(SpaRoot)**" />
+        <Content Include="ClientApp\src\validation\validators\tsconfig.json" />
         <None Remove="$(SpaRoot)**" />
         <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
     </ItemGroup>
 
     <ItemGroup>
       <TypeScriptCompile Include="ClientApp\src\App.tsx" />
-      <TypeScriptCompile Include="ClientApp\src\components\ClientInput\Form.tsx" />
-      <TypeScriptCompile Include="ClientApp\src\components\ClientInput\NumberInput.tsx" />
-      <TypeScriptCompile Include="ClientApp\src\components\ClientInput\Select.tsx" />
-      <TypeScriptCompile Include="ClientApp\src\components\ClientInput\TextInput.tsx" />
-      <TypeScriptCompile Include="ClientApp\src\components\ClientInput\UserData.tsx" />
+      <TypeScriptCompile Include="ClientApp\src\components\CreditForm.tsx" />
       <TypeScriptCompile Include="ClientApp\src\components\Home.tsx" />
+      <TypeScriptCompile Include="ClientApp\src\enums\Deposit.ts" />
+      <TypeScriptCompile Include="ClientApp\src\enums\Employment.ts" />
+      <TypeScriptCompile Include="ClientApp\src\enums\Purpose.ts" />
       <TypeScriptCompile Include="ClientApp\src\interfaces\IUserData.ts" />
-      <TypeScriptCompile Include="ClientApp\src\validation\FormErrors.tsx" />
+      <TypeScriptCompile Include="ClientApp\src\validation\ValidationData.ts" />
+      <TypeScriptCompile Include="ClientApp\src\validation\validators\ApplicationValidation.ts" />
+      <TypeScriptCompile Include="ClientApp\src\validation\validators\FullNameValidator.ts" />
+      <TypeScriptCompile Include="ClientApp\src\validation\validators\PassportDataValidator.ts" />
     </ItemGroup>
 
     <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
