@@ -5,7 +5,6 @@ import { BrowserRouter , Routes, Route} from 'react-router-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {Home} from "./components/Home";
 import {createRoot} from "react-dom/client";
 
 /*const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');*/
